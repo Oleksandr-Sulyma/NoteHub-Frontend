@@ -10,6 +10,12 @@ The app is built with Next.js App Router, React, TypeScript, TanStack Query, Zus
 - Backend API: [https://nodejs-hw-awfs.onrender.com](https://nodejs-hw-awfs.onrender.com)
 - Backend repository: [NoteHub Backend](https://github.com/Oleksandr-Sulyma/nodejs-hw)
 
+## Preview
+
+![NoteHub notes page](./public/screenshots/notes.png)
+![NoteHub note details](./public/screenshots/note-details.png)
+![NoteHub profile page](./public/screenshots/profile.png)
+
 ## Features
 
 - User registration and login
