@@ -1,138 +1,207 @@
-# 🇬🇧
+# NoteHub Frontend
 
-# 📓 NoteHub
+Frontend application for NoteHub, a fullstack notes management app with authentication, protected routes, profile management, avatar upload, note creation, search, filtering, pagination, and persistent note drafts.
 
-**NoteHub** is a powerful desktop note-taking application built with a modern tech stack: **Next.js 15, React 19, and TanStack Query**.  
-The project demonstrates advanced client-server architecture, secure data fetching, and modern development best practices.
+The app is built with Next.js App Router, React, TypeScript, TanStack Query, Zustand, React Hook Form, Zod, and CSS Modules. It communicates with the NoteHub backend through Next.js API routes that proxy requests and preserve HTTP-only authentication cookies.
 
----
+## Live Demo
 
-## 🚀 Live Demo  
-👉 [https://note-hub-iota.vercel.app](https://note-hub-iota.vercel.app)  
+- Frontend: [https://note-hub-iota.vercel.app](https://note-hub-iota.vercel.app)
+- Backend API: [https://nodejs-hw-awfs.onrender.com](https://nodejs-hw-awfs.onrender.com)
+- Backend repository: [NoteHub Backend](https://github.com/Oleksandr-Sulyma/nodejs-hw)
 
-## 🔗 Backend API  
-👉 [https://nodejs-hw-awfs.onrender.com](https://nodejs-hw-awfs.onrender.com)  
-👉 [https://github.com/Oleksandr-Sulyma/nodejs-hw](https://github.com/Oleksandr-Sulyma/nodejs-hw)  
+## Features
 
----
+- User registration and login
+- Protected routes for notes and profile pages
+- HTTP-only cookie authentication handled through Next.js API routes
+- Session check and automatic refresh flow
+- Notes list with pagination
+- Search notes by keyword
+- Filter notes by tag
+- Create, view, edit, and delete notes
+- Note details page and intercepted modal preview
+- Persistent note draft stored with Zustand
+- User profile page
+- Username update
+- Avatar upload
+- Form validation with React Hook Form and Zod
+- Server-side and client-side data fetching
+- Toast notifications for user feedback
+- Responsive UI styled with CSS Modules
 
-## ✨ Features
+## Tech Stack
 
-- 🔐 **Authentication System** Secure registration, login, and logout using HTTP-only cookies.
+- Next.js
+- React
+- TypeScript
+- TanStack Query
+- Zustand
+- React Hook Form
+- Zod
+- Axios
+- React Hot Toast
+- React Paginate
+- CSS Modules
+- Vercel
 
-- 👤 **Profile Management** Update username and avatar (with real-time preview and size/format validation).
+## Project Structure
 
-- 📝 **Notes CRUD** Full Create, Read, Update, and Delete functionality with instant UI synchronization.
+```text
+app/
+  (auth routes)/
+  (private routes)/
+  @modal/
+  api/
+  layout.tsx
+  page.tsx
+components/
+hooks/
+lib/
+  api/
+  constants/
+  store/
+public/
+types/
+proxy.ts
+next.config.ts
+```
 
-- 🔎 **Smart Filtering** Filter notes by categories (tags) and perform high-performance search.
+## Getting Started
 
-- 💾 **Draft System** Auto-save notes using **Zustand** to prevent data loss during editing.
-
-- ✅ **Strict Validation** Robust form handling and schema validation with **Zod + React Hook Form**.
-
----
-
-## 🛠 Tech Stack
-
-| Technology | Description |
-|----------|------------|
-| **Next.js 15** | App Router, Server Actions, Middleware, and Server-Side Proxying |
-| **React 19** | Latest hooks, concurrent rendering, and performance optimizations |
-| **TypeScript** | Full type safety across the entire application |
-| **TanStack Query** | Server state management, caching, and smart invalidation |
-| **Zustand** | Lightweight client-side state management for drafts and UI state |
-| **Zod + RHF** | Type-safe form validation and management |
-| **CSS Modules** | Scoped and maintainable styling |
-
----
-
-## 🏗 Architecture Highlights
-
-- 🖥 **Desktop First** Optimized specifically for large screens to provide a premium desktop-only experience.
-
-- 🔒 **Secure Image Handling** Configured `remotePatterns` in `next.config.ts` for Cloudinary and GoIT assets to ensure secure and optimized image loading.
-
-- 🔄 **Server-Side API Proxy** Implemented secure communication with the external Node.js backend via a server-side proxy layer to handle data flow and security.
-
-- 🛡️ **Type Safety** Extensive use of `z.infer` to ensure 100% synchronization between validation schemas and TypeScript types.
-
-- 🎯 **UX Enhancements** Custom toast notifications (React Hot Toast) for non-blocking user feedback and delete confirmations.
-
----
-
-## 💻 Local Setup
+### 1. Clone the repository
 
 ```bash
-git clone [https://github.com/Oleksandr-Sulyma/NoteHub.git](https://github.com/Oleksandr-Sulyma/NoteHub.git)
+git clone https://github.com/Oleksandr-Sulyma/NoteHub.git
 cd NoteHub
+```
+
+### 2. Install dependencies
+
+```bash
 npm install
 ```
 
-Create `.env.local` and add:
+### 3. Configure environment variables
+
+Create a `.env.local` file in the project root and use `.env.example` as a reference.
 
 ```env
-NEXT_PUBLIC_API_URL=[https://nodejs-hw-awfs.onrender.com](https://nodejs-hw-awfs.onrender.com)
-BACKEND_API_URL=[https://nodejs-hw-awfs.onrender.com](https://nodejs-hw-awfs.onrender.com)
+NEXT_PUBLIC_API_URL=http://localhost:3000
+BACKEND_API_URL=http://localhost:9999
 ```
 
-> **Note:** > `NEXT_PUBLIC_API_URL` is used for client-side interactions.  
-> `BACKEND_API_URL` is used for server-side operations (Next.js).
+For production, set these variables to the deployed frontend and backend URLs.
 
-Run the project:
+```env
+NEXT_PUBLIC_API_URL=https://your-frontend-domain.com
+BACKEND_API_URL=https://your-backend-api.com
+```
+
+### 4. Run the development server
 
 ```bash
 npm run dev
 ```
 
----
+Open [http://localhost:3000](http://localhost:3000) in the browser.
 
-## 🧩 Challenges & Solutions
+## Available Scripts
 
-### 🔐 Authentication & Security
-**Challenge:** Securely handling authentication in a fullstack Next.js application.  
-**Solution:** Implemented HTTP-only cookies and protected routes via **Next.js Middleware** for server-side security.
+| Script | Description |
+| --- | --- |
+| `npm run dev` | Start the Next.js development server |
+| `npm run build` | Build the application for production |
+| `npm start` | Start the production server |
+| `npm run lint` | Run ESLint |
+| `npm run format` | Format project files with Prettier |
 
-### 🔄 State Synchronization
-**Challenge:** Keeping the UI in sync with server data after complex CRUD operations.  
-**Solution:** Leveraged **TanStack Query** for automatic refetching and cache invalidation.
+## Environment Variables
 
-### 💾 Preventing Data Loss
-**Challenge:** Users losing unsaved note content due to accidental page refreshes.  
-**Solution:** Built a draft auto-save system powered by **Zustand** to persist data locally.
+| Variable | Description |
+| --- | --- |
+| `NEXT_PUBLIC_API_URL` | Base URL used by the browser to call this Next.js app API routes |
+| `BACKEND_API_URL` | Backend API URL used by Next.js route handlers on the server side |
 
-### 🌐 CORS & API Communication
-**Challenge:** Resolving CORS issues and ensuring secure communication with the external API.  
-**Solution:** Configured a **Server-Side Proxy** approach and **Remote Patterns** in `next.config.ts`.
+## Application Routes
 
----
+| Route | Description | Access |
+| --- | --- | --- |
+| `/` | Home page | Public |
+| `/sign-in` | Login page | Public only |
+| `/sign-up` | Registration page | Public only |
+| `/notes/filter/[...slug]` | Notes list with tag filtering, search, and pagination | Private |
+| `/notes/action/create` | Create note page | Private |
+| `/notes/[id]` | Note details page | Private |
+| `/profile` | Current user profile | Private |
+| `/profile/edit` | Edit username and avatar | Private |
 
-## 👤 Author
+## API Proxy Routes
 
-**Oleksandr Sulyma** GitHub: [https://github.com/Oleksandr-Sulyma](https://github.com/Oleksandr-Sulyma)
+The frontend exposes Next.js API routes under `/api`. These routes forward requests to the backend and keep authentication cookies on the server side.
 
----
+| Method | Route | Backend target |
+| --- | --- | --- |
+| `POST` | `/api/auth/register` | `/auth/register` |
+| `POST` | `/api/auth/login` | `/auth/login` |
+| `POST` | `/api/auth/logout` | `/auth/logout` |
+| `GET` | `/api/auth/session` | `/auth/session` |
+| `GET` | `/api/notes` | `/notes` |
+| `POST` | `/api/notes` | `/notes` |
+| `GET` | `/api/notes/[id]` | `/notes/:id` |
+| `PATCH` | `/api/notes/[id]` | `/notes/:id` |
+| `DELETE` | `/api/notes/[id]` | `/notes/:id` |
+| `GET` | `/api/users/me` | `/users/me` |
+| `PATCH` | `/api/users/me` | `/users/me/username` and `/users/me/avatar` |
 
-# 🇺🇦
+## Notes Functionality
 
-# 📓 NoteHub
+The notes list supports:
 
-**NoteHub** — це потужний десктопний додаток для керування нотатками, створений на сучасному стеку: **Next.js 15, React 19 та TanStack Query**.  
-Проєкт демонструє побудову клієнт-серверної архітектури та сучасні підходи до веб-розробки.
+- Pagination with 12 notes per page
+- Search by title or content
+- Filtering by tag
+- Protected access per authenticated user
 
-## ✨ Основні можливості
+Available note tags:
 
-* 🔐 **Система авторизації:** Реєстрація, вхід та вихід через HTTP-only cookies.
-* 👤 **Керування профілем:** Зміна імені та аватара (з прев’ю та валідацією).
-* 📝 **CRUD нотаток:** Повний цикл роботи з нотатками з миттєвим оновленням UI.
-* 🔎 **Розумна фільтрація:** Категорії (теги) та швидкий пошук.
-* 💾 **Система чернеток:** Автозбереження через **Zustand**.
-* ✅ **Валідація форм:** Сувора типізація та перевірка через **Zod + React Hook Form**.
+```text
+Todo, Work, Personal, Meeting, Shopping, Ideas, Travel, Finance, Health, Important
+```
 
-## 🏗 Архітектурні особливості
+Note validation:
 
-* 🖥 **Desktop First:** Оптимізація під великі екрани (Desktop Only).
-* 🔒 **Безпечні зображення:** Налаштовано `remotePatterns` для Cloudinary та GoIT.
-* 🔄 **Серверне проксіювання:** Безпечна взаємодія з бекендом через серверний шар.
-* 🔒 **Type Safety:** Синхронізація схем і типів через `z.infer`.
+- `title`: 3 to 50 characters
+- `content`: up to 500 characters
+- `tag`: one of the available tags
 
----
+## Authentication Flow
+
+1. The user registers or logs in through the frontend.
+2. The request goes to a Next.js API route.
+3. The API route forwards credentials to the backend.
+4. Backend returns HTTP-only cookies.
+5. Next.js stores and forwards cookies for protected requests.
+6. `proxy.ts` protects private routes and redirects unauthenticated users to `/sign-in`.
+
+## Architecture Notes
+
+- Next.js App Router is used for routing, layouts, route handlers, and intercepted modal routes.
+- TanStack Query handles server state, caching, invalidation, and async UI updates.
+- Zustand persists unfinished note drafts in local storage.
+- React Hook Form and Zod provide form state management and schema validation.
+- Axios instances separate browser-facing Next.js API calls from backend-facing server calls.
+- `next.config.ts` allows optimized remote images from Cloudinary and configured asset hosts.
+
+## Related Repository
+
+This frontend works together with the NoteHub backend:
+
+- [NoteHub Backend](https://github.com/Oleksandr-Sulyma/nodejs-hw)
+
+## Author
+
+Oleksandr Sulyma
+
+- GitHub: [Oleksandr-Sulyma](https://github.com/Oleksandr-Sulyma)
+- LinkedIn: [oleksandr-sulyma](https://www.linkedin.com/in/oleksandr-sulyma/)
